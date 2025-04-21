@@ -1,24 +1,23 @@
 import pandas as pd
 import os
 
-df = pd.read_csv('leaderboard.csv')
+df = pd.read_csv("leaderboard.csv")
 
-df = df.sort_values('score', ascending=False).reset_index(drop=True)
+df = df.sort_values("score", ascending=False).reset_index(drop=True)
 
-if 'rank' in df.columns:
-    df = df.drop(columns=['rank'])
+if "rank" in df.columns:
+    df = df.drop(columns=["rank"])
 
-df.insert(0, 'rank', df.index + 1)
+df.insert(0, "rank", df.index + 1)
 
 table_html = df.to_html(
-    index=False,
-    classes='table table-striped',
-    float_format='{:0.4f}'.format
+    index=False, classes="table table-striped", float_format="{:0.4f}".format
 )
 
-os.makedirs('docs', exist_ok=True)
-with open('docs/index.html', 'w', encoding='utf-8') as f:
-    f.write(f"""<!doctype html>
+os.makedirs("docs", exist_ok=True)
+with open("docs/index.html", "w", encoding="utf-8") as f:
+    f.write(
+        f"""<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -32,6 +31,7 @@ with open('docs/index.html', 'w', encoding='utf-8') as f:
 </div>
 </body>
 </html>
-""")
+"""
+    )
 
-print('Generated docs/index.html')
+print("Generated docs/index.html")
