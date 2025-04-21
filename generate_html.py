@@ -11,7 +11,10 @@ if "rank" in df.columns:
 df.insert(0, "rank", df.index + 1)
 
 table_html = df.to_html(
-    index=False, classes="table table-striped", float_format="{:0.4f}".format
+    index=False,
+    classes="table table-striped",
+    float_format="{:0.4f}".format,
+    justify="left",
 )
 
 os.makedirs("docs", exist_ok=True)
