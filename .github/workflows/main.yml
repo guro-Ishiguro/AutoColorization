@@ -34,7 +34,7 @@ jobs:
 
       - name: Bring in student's submission.csv
         run: |
-          git checkout "${{ github.ref }}" -- submission.csv
+          git show "${{ github.ref }}:submission.csv" > submission.csv
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
