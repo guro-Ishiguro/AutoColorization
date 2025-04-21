@@ -29,13 +29,8 @@ jobs:
 
       - name: Switch to pages branch
         run: |
-          if git show-ref --quiet refs/heads/${P_BRANCH}; then
-            git checkout ${P_BRANCH}
-            git pull origin ${P_BRANCH}
-          else
-            git checkout --orphan ${P_BRANCH}
-            git rm -rf .
-          fi
+          git checkout ${P_BRANCH}
+          git pull origin ${P_BRANCH}
 
       - name: Bring in student's submission.csv
         run: |
