@@ -77,4 +77,7 @@
     git push origin (ユーザー名ブランチ)
     ```
 
-3. `push` することで `.github/workflows/main.yml` が走り、`submission.csv` に従い、リーダーボードの更新が行われる。数十秒後、GitHub Pages で設定したページを更新するとリーダーボードの変更が行われている。
+3. `push` することで `.github/workflows/main.yml` が走り、`submission.csv` に従い、リーダーボードの更新が行われる。数十秒後、GitHub Pages で設定したページを更新すると下の画像のようにリーダーボードの変更が行われている。
+
+   ![guro-ishiguro github io_AutoColorization_](https://github.com/user-attachments/assets/b8bc81dd-5385-4fa5-b8d8-fe1df3411c79)
+
