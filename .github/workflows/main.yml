@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 env:
-  P_BRANCH: pages-2025-04-21
+  P_BRANCH: pages-kyoto-2025-04-21
 
 jobs:
   update-pages:
