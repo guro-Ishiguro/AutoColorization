@@ -22,7 +22,7 @@ def main():
     if not files:
         raise RuntimeError(f"No files found in {gray_dir}")
 
-    mse_vals, psnr_vals, ssim_vals = [], [], []
+    mse_vals = []
 
     for fname in files:
         img_gray = (
@@ -43,14 +43,10 @@ def main():
         arr_gt = np.array(img_gt, dtype=np.float32) / 255.0
 
         mse_vals.append(np.mean((pred - arr_gt) ** 2))
-        psnr_vals.append(float(tf.image.psnr(pred, arr_gt, max_val=1.0).numpy()))
-        ssim_vals.append(float(tf.image.ssim(pred, arr_gt, max_val=1.0).numpy()))
 
     mse_mean = np.mean(mse_vals)
-    psnr_mean = np.mean(psnr_vals)
-    ssim_mean = np.mean(ssim_vals)
 
-    score = psnr_mean + ssim_mean * 10 - mse_mean * 100
+    score = mse_mean * 100
 
     date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
