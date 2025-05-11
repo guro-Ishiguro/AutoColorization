@@ -10,7 +10,14 @@ if "rank" in df.columns:
 
 df = df.head(5)
 
-df.insert(0, "rank", df.index + 1)
+df.insert(
+    0,
+    "rank",
+    df["score"]
+      .rank(method="min", ascending=False)  
+      .astype(int)                          
+      .values
+)
 
 table_html = df.to_html(
     index=False,
@@ -21,8 +28,7 @@ table_html = df.to_html(
 
 os.makedirs("docs", exist_ok=True)
 with open("docs/index.html", "w", encoding="utf-8") as f:
-    f.write(
-        f"""<!doctype html>
+    f.write(f"""<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -36,7 +42,6 @@ with open("docs/index.html", "w", encoding="utf-8") as f:
 </div>
 </body>
 </html>
-"""
-    )
+""")
 
 print("Generated docs/index.html")
