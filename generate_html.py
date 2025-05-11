@@ -8,6 +8,8 @@ df = df.sort_values("score", ascending=False).reset_index(drop=True)
 if "rank" in df.columns:
     df = df.drop(columns=["rank"])
 
+df = df.head(5)
+
 df.insert(0, "rank", df.index + 1)
 
 table_html = df.to_html(
